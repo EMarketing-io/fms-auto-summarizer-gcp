@@ -1,0 +1,17 @@
+# Common Packages
+openai==0.28
+python-docx
+python-dotenv
+requests
+beautifulsoup4
+
+# Google APIs
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+gspread
+oauth2client
+
+# Audio Processing
+pydub

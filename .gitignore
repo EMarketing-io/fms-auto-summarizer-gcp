@@ -1,0 +1,30 @@
+# Python Cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.log
+
+# Environment & Configuration
+.env
+token.pickle
+google_oauth_credentials.json
+google_service_account.json
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# VSCode specific
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/
