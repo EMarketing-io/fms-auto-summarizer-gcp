@@ -9,8 +9,6 @@ __pycache__/
 
 # Environment & Configuration
 .env
-token.pickle
-google_oauth_credentials.json
 google_service_account.json
 
 # Temporary files
@@ -25,6 +23,3 @@ google_service_account.json
 # OS-specific
 .DS_Store
 Thumbs.db
-
-# Streamlit
-.streamlit/
