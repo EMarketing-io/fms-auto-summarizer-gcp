@@ -4,7 +4,7 @@ import os
 # 🌐 Third-Party Libraries: external dependencies (Google APIs, dotenv, etc.)
 from dotenv import load_dotenv
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.auth import default
 
 # 📊 Google Sheet Integration: functions to update summary results
 from utils.sheet_utils import update_sheet_with_links
@@ -53,12 +53,9 @@ def get_all_rows():
         "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive",
     ]
-    creds = ServiceAccountCredentials.from_json_keyfile_name(
-        os.getenv("GOOGLE_SA_FILE"), scope
-    )
+    creds, _ = default(scopes=scope)  # ✅ Uses Cloud Run attached service account
     client = gspread.authorize(creds)
     sheet = client.open_by_key(os.getenv("GOOGLE_SHEET_ID")).sheet1
-
     return sheet.get_all_values(), sheet
 
 

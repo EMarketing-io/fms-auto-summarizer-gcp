@@ -5,25 +5,7 @@ import tempfile
 
 # 🌐 Third-Party Libraries
 from dotenv import load_dotenv
-from google.oauth2.service_account import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
-
-# 🔐 Load environment variables
-load_dotenv()
-
-# 🔧 Config: Path to service account + Drive API scopes
-GOOGLE_SA_FILE = os.getenv("GOOGLE_SA_FILE")
-SCOPES = ["https://www.googleapis.com/auth/drive"]
-
-# 📦 Standard Libraries
-import os
-import io
-import tempfile
-
-# 🌐 Third-Party Libraries
-from dotenv import load_dotenv
-from google.oauth2.service_account import Credentials
+from google.auth import default
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload, MediaIoBaseUpload
 
@@ -37,10 +19,7 @@ SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 # 📡 Authenticate using a service account and return a Drive API client
 def get_drive_service():
-    if not GOOGLE_SA_FILE:
-        raise ValueError("❌ GOOGLE_SA_FILE not set in .env")
-
-    creds = Credentials.from_service_account_file(GOOGLE_SA_FILE, scopes=SCOPES)
+    creds, _ = default(scopes=SCOPES)  # ✅ Uses Cloud Run attached service account
     return build("drive", "v3", credentials=creds)
 
 
