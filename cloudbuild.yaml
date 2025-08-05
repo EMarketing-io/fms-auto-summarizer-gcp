@@ -1,0 +1,14 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "asia-south1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest",
+        ".",
+      ]
+
+images:
+  - "asia-south1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest"
+
+logsBucket: "gs://cloud-build-logs-summarizer-466905"
