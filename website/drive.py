@@ -3,7 +3,7 @@ import os
 
 # 🌐 Third-Party Libraries
 from dotenv import load_dotenv
-from google.oauth2.service_account import Credentials
+from google.auth import default
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaInMemoryUpload
 
@@ -23,7 +23,7 @@ def authenticate_google_drive():
     if not GOOGLE_SA_FILE:
         raise ValueError("⚠️ GOOGLE_SA_FILE not set in .env")
 
-    creds = Credentials.from_service_account_file(GOOGLE_SA_FILE, scopes=SCOPES)
+    creds, _ = default(scopes=SCOPES)
 
     return build("drive", "v3", credentials=creds)
 
