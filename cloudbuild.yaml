@@ -1,15 +1,17 @@
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: CLOUD_LOGGING_ONLY # ✅ Avoids logs bucket issues
 
 steps:
+  # Step 1: Build the Docker image
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-t",
-        "asia-south1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest",
+        "us-central1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest",
         ".",
       ]
 
 images:
-  - "asia-south1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest"
+  # Step 2: Push the image to Artifact Registry
+  - "us-central1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest"
