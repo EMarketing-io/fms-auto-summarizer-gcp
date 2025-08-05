@@ -1,3 +1,6 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
@@ -10,5 +13,3 @@ steps:
 
 images:
   - "asia-south1-docker.pkg.dev/summarizer-466905/fms-auto-summarizer/fms-auto-summarizer:latest"
-
-logsBucket: "gs://cloud-build-logs-summarizer-466905"
